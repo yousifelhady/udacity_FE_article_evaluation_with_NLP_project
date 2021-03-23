@@ -1,3 +1,5 @@
+import isValidUrl from './checkURL.js'
+
 const post = async (url = '', data = {}) => {
     const response = await fetch(url, {
         method: 'POST',
@@ -15,16 +17,28 @@ const post = async (url = '', data = {}) => {
     }
 }
 
-const handleSubmit = async () => {
-    /**
-     * TODO
-     *  - Get Value of the input for URL
-     *  - Check if it's URL or not
-     *      yes
-     *          send it to the backend
-     *      no
-     *          show user message it's not valid URL
-     */
+const handleSubmit = async (e) => {
+    e.preventDefault()
+    var enteredUrl = document.getElementById("article-url").value
+    if (isValidUrl(enteredUrl))
+    {
+        const endpointRoute = "/add-url"
+        const serverURL = `http://localhost:5000${endpointRoute}`
+        const data = {
+            url: enteredUrl
+        }
+        post(serverURL, data)
+        .then(res => {
+            document.getElementById("text").innerHTML = res.text
+            document.getElementById("agreement").innerHTML = res.agreement
+            document.getElementById("subjectivity").innerHTML = res.subjectivity
+            document.getElementById("confidence").innerHTML = res.confidence
+            document.getElementById("irony").innerHTML = res.irony
+            document.getElementById("score_tag").innerHTML = res.score_tag
+        })
+    } else {
+        alert("Invalid URL format!")
+    }
 }
 
 export default handleSubmit

@@ -8,3 +8,8 @@
     5. https://stackoverflow.com/a/5717133/6483379
     6. https://www.npmjs.com/package/valid-url
  */
+function isValidUrl(url) {
+    return true
+}
+
+export default isValidUrl

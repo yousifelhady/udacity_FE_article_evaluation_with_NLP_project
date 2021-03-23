@@ -6,6 +6,14 @@
   </head>
 
   <body>
+    <header>
+      <div class="">
+          Logo
+      </div>
+      <div class="">
+          navigation
+      </div>
+    </header>
     <main>
       <div class="container">
         <p>Enter a URL of an article / a blog to discover its sentiment.</p>
@@ -13,27 +21,29 @@
           <form id="form">
             <label for="article-url">URL</label>
             <input id="article-url" type="text" name="input" value="" placeholder="Enter Article URL here" />
-            <button
-              type="submit"
-              class="btn-submit"
-            >
-              Submit
-            </button>
+            <input type="submit" id="btn-submit" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
           </form>
         </section>
-
         <section>
           <strong>Form Results:</strong>
-          <div id="text"></div>
+          <ul>
+            <li id="text"></li>
+            <li id="agreement"></li>
+            <li id="subjectivity"></li>
+            <li id="confidence"></li>
+            <li id="irony"></li>
+            <li id="score_tag"></li>
+          </ul>
+          <!--<div id="text"></div>
           <div id="agreement"></div>
           <div id="subjectivity"></div>
           <div id="confidence"></div>
           <div id="irony"></div>
-          <div id="score_tag"></div>
+          <div id="score_tag"></div>-->
         </section>
       </div>
     </main>
-    <script>
+    <!--<script>
       // Check that service workers are supported
       if ('serviceWorker' in navigator) {
         // Use the window load event to keep the page load performant
@@ -41,6 +51,6 @@
           navigator.serviceWorker.register('/service-worker.js')
         })
       }
-    </script>
+    </script>-->
   </body>
 </html>
