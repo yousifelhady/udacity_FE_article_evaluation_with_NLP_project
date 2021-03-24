@@ -21,7 +21,7 @@ app.get('/', function (req, res) {
     res.sendFile('src/client/views/index.html')
 })
 
-// INFO: a route that handling post request for new URL that coming from the frontend
+//Post endpoint to handle the communication with MeaningCloud API for NLP
 app.post('/add-url', async (req, res) => {
     try {
         var submittedUrl = req.body.url
@@ -41,7 +41,7 @@ app.post('/add-url', async (req, res) => {
         console.log(responseObject)
         res.send(responseObject)
     } catch (error) {
-        console.log("error:" + error.message)
+        console.log("Endpoint error: " + error.message)
     }
 })
 
@@ -49,10 +49,9 @@ app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
 
-// designates what port the app will listen to for incoming requests
 app.listen(PORT, (error) => {
     if (error) throw new Error(error)
-    console.log(`Server listening on port ${PORT}!`)
+    console.log(`Server is listening on port ${PORT}!`)
 })
 
 module.exports = app

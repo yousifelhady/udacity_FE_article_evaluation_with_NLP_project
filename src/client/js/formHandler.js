@@ -17,9 +17,9 @@ const post = async (url = '', data = {}) => {
     }
 }
 
-const handleSubmit = async (e, enteredUrl='') => {
+const handleSubmit = async (e) => {
     e.preventDefault()
-    enteredUrl = document.getElementById("article-url").value
+    const enteredUrl = document.getElementById("article-url").value
     if (isValidUrl(enteredUrl))
     {
         const endpointRoute = "/add-url"
