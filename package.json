@@ -12,12 +12,9 @@
   "author": "yousifelhady",
   "description": "udacity React ND first project (article evaluation with NLP)",
   "dependencies": {
-    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
     "regenerator-runtime": "^0.10.5",
