@@ -1,10 +1,27 @@
-// to solve ReferenceError: regeneratorRuntime is not defined
-// https://knowledge.udacity.com/questions/174638
-import 'babel-polyfill'
+const request = require('supertest')
+const app = require("../index")
 
-describe('Server Test', () => {
-    // TODO: add your test cases to test server
-    // HINT: Review
-    //  1. https://www.npmjs.com/package/supertest
-    //  2. https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6
+describe('Testing server endpoints', () => {
+    
+    test('testing GET /test endpoint', () => {
+        request(app)
+        .get('/test')
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(function(err, res) {
+            if (err) throw err;
+        });
+    })
+
+    test('testing POST /add-url endpoint', (done) => {
+        request(app)
+        .post('/add-url')
+        .send({url: "https://jamesclear.com/journaling-one-sentence"})
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+            if (err) return done(err);
+            return done();
+        })
+    })
 })

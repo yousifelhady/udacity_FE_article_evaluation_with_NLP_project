@@ -2,22 +2,19 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 var path = require('path')
-
-const mockAPIResponse = require('./mockAPI.js')
-
-const PORT = 5000
-
-const meaningCloudAPIKey = process.env.MEANING_CLOUD_API_KEY
-
-const BASE_API_URL = 'https://api.meaningcloud.com/sentiment-2.1'
-
 const express = require('express')
 const cors = require('cors')
 const fetch = require('node-fetch')
+const mockAPIResponse = require('./mockAPI.js')
+
 const app = express()
 app.use(express.static('dist'))
 app.use(cors())
 app.use(express.json())
+
+const BASE_API_URL = 'https://api.meaningcloud.com/sentiment-2.1'
+const meaningCloudAPIKey = process.env.MEANING_CLOUD_API_KEY
+const PORT = 5000
 
 app.get('/', function (req, res) {
     //res.sendFile('dist/index.html')
@@ -58,4 +55,4 @@ app.listen(PORT, (error) => {
     console.log(`Server listening on port ${PORT}!`)
 })
 
-// TODO: export app to use it in the unit testing
+module.exports = app
